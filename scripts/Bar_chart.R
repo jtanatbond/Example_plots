@@ -8,10 +8,10 @@ library(pzfx)
 ## https://cran.r-project.org/web/packages/pzfx/vignettes/pzfx.html#:~:text=GraphPad%20Prism%20is%20a%20software,into%20R%20and%20vise%20versa.
 
 ## List tables in .pzfx file
-pzfx_tables("/run/media/jon/FILES/Work/Desktop items/Git/jkthesis/young vs old graphs JTmod.pzfx")
+pzfx_tables("data/young vs old graphs JTmod.pzfx")
 
 ## Read a specific table from a .pzfx file
-Fig423b <- read_pzfx("/run/media/jon/FILES/Work/Desktop items/Git/jkthesis/young vs old graphs JTmod.pzfx", "Figure 4.2.3B")
+Fig423b <- read_pzfx("data/young vs old graphs JTmod.pzfx", "Figure 4.2.3B")
 
 ## View dataframe
 view(Fig423b)
@@ -22,7 +22,7 @@ view(Fig423b)
 ## https://datascience.stackexchange.com/questions/66590/how-to-plot-multiple-columns-with-ggplot-in-r
 Fig423b.tall <- Fig423b %>% select(Young, Old, "Old asplenic") %>%
   pivot_longer(., cols = c(Young,Old,"Old asplenic"), names_to = "Age", values_to = "HSC") ## Concatenate columns (Young, Old, Old Asplenic) into one column (age)
-View (tall)
+View (Fig423b.tall)
 
 ## Create a plot
 Fig423b.tall %>%
@@ -171,4 +171,6 @@ Fig423b.tallna.annotated +
            label = c("p=0.005", "p=0.1224") , color="black", 
            size=5 , angle=0, fontface="italic") +
   annotate(geom = "segment", x = c(0.8,2.1), xend = c(1.8,3.1), y = c(77,87), yend = c(77,87), colour = "#060606") 
+
+
 

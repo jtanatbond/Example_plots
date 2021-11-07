@@ -8,10 +8,10 @@ library(pzfx)
 ## https://cran.r-project.org/web/packages/pzfx/vignettes/pzfx.html#:~:text=GraphPad%20Prism%20is%20a%20software,into%20R%20and%20vise%20versa.
 
 ## List tables in .pzfx file
-pzfx_tables("/run/media/jon/FILES/Work/Desktop items/Git/jkthesis/young vs old graphs JTmod.pzfx")
+pzfx_tables("data/young vs old graphs JTmod.pzfx")
 
 ## Read a specific table from a .pzfx file
-data1 <- read_pzfx("/run/media/jon/FILES/Work/Desktop items/Git/jkthesis/young vs old graphs JTmod.pzfx", "Data 1")
+data1 <- read_pzfx("data/young vs old graphs JTmod.pzfx", "Data 1")
 
 ## View dataframe
 view(data1)
