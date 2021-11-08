@@ -9,7 +9,16 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Understading your data
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy(
+  position = c('top', 'right'),
+  color = "auto",
+  tooltip_message = "Copy code",
+  tooltip_success = "Copied!"
+)
+```
+
+## Understanding your data
 
 Example: NHMRC scores over the last 2 years
 

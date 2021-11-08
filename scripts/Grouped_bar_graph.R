@@ -4,7 +4,7 @@ library(tidyverse)
 
 ## Read .csv file
 library(readr)
-nhmrc <- read_csv("data/NHMRC_scoring_history2.csv", 
+nhmrc <- read_csv("../data/NHMRC_scoring_history2.csv", 
                   col_types = cols(Score = col_number()))
 View(nhmrc)
 
@@ -30,8 +30,8 @@ nhmrc  %>%
 
 nhmrc  %>% 
   filter(Year %in% c("2020", "2021", "(2021_cutoff)")) %>%
-  filter(Category %in% c("OS")) %>%
-  ggplot( aes(x=Category, y=Score, fill=Year)) +
+  filter(Criteria %in% c("OS")) %>%
+  ggplot( aes(x=Criteria, y=Score, fill=Year)) +
   scale_x_discrete(limits = c("OS")) +
   geom_bar(stat="identity", position="dodge") +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 7)) +

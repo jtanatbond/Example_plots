@@ -1,0 +1,68 @@
+---
+title: 'How to: Import a .csv file'
+author: "Jonathan Tan"
+date: "08/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy(
+  position = c('top', 'right'),
+  color = "auto",
+  tooltip_message = "Copy code",
+  tooltip_success = "Copied!"
+)
+```
+
+## Organising your work
+
+Saving the .csv file in the working Rproject folder is a good strategy for keeping data organised and the workspace tidy.
+
+Folders can be created using the following commands:
+```{r, eval = FALSE}
+dir.create("scripts")
+dir.create("plots")
+dir.create("data")
+dir.create("markdown")
+```
+
+Under this folder structure, the markdown script is located in the "markdown" folder. The .csv file is located in the "data" folder.
+Therefore, relative to the the markdown script, the file pathway to the .csv file is:
+../data/NHMRC_scoring_history2.csv
+
+## Configure the .csv data
+
+Using the "Files" navigator panel, open the "data" folder and click in the .csv file. Choose "Import dataset..."
+
+
+Under "Data preview", the type of data can be modified:
+
++ Nominal data (like names) = character (text)
++ Height (tall/short) would be categorical data, but there's an order to it (ordinal) = factor
++ Age (whole number, integer)
++ Weight (any number even between whole numbers(integers), numeric/continuous)
++ Logical: true or false
+
+Under "Import options":
+
++ Rename dataframe (nhmrc)
++ Select any other relevant options
+
+Under "Code preview":
+
++ Copy code. This will be pasted into the script (below)
+
+## Import the .csv data
+
+The code which has been copied is then used to import the .csv file into a dataframe called "nhmrc":
+```{r}
+library(readr)
+nhmrc <- read_csv("../data/NHMRC_scoring_history2.csv", 
+                  col_types = cols(Score = col_number()))
+head(nhmrc, n = 12L)
+```
+

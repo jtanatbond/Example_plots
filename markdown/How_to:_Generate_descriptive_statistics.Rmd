@@ -1,0 +1,73 @@
+---
+title: 'How to: Generate Descriptive Statistics)'
+author: "Jonathan Tan"
+date: "08/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy(
+  position = c('top', 'right'),
+  color = "auto",
+  tooltip_message = "Copy code",
+  tooltip_success = "Copied!"
+)
+```
+
+## Understanding your data
+
+Example: Comparing CD150hi (myeloid-biased) HSC between young and old animals
+
+When thinking about your data, identify the following:
+
+1. What are you comparing **(independent variables)**?
+ + *Young and old animals (ie. Category = Age)*
+
+2. What is your measurement **(dependent variables)**?
+  + *The percentage of CD150^hi^ HSC (Category = HSC)*
+  
+## Here we are importing data from a Prism file
+List all the data tables in the Prism file.
+
+```{r}
+library(pzfx)
+pzfx_tables("../data/young vs old graphs JTmod.pzfx")
+```
+
+Now we can select which data table to import:
+```{r}
+Fig423b <- read_pzfx("../data/young vs old graphs JTmod.pzfx", "Figure 4.2.3B")
+head(Fig423b, N = 6)
+```
+
+Oh no! The data is in a format which RStudio can't read!
+
+We need to arrange this dataset so that each column lists a variable (Age, HSC).
+
+Fortunately, we can call on the "pivot_longer" function to convert data into "Tall format":
+```{r, message = FALSE}
+library(tidyverse)
+Fig423b.tall <- Fig423b %>% select(Young, Old, "Old asplenic") %>%
+  pivot_longer(., cols = c(Young,Old,"Old asplenic"), names_to = "Age", values_to = "HSC") ## Concatenate columns (Young, Old, Old Asplenic) into one column (age)
+head(Fig423b.tall, N = 21)
+```
+
+Now all the observations (values for percent HSC) are listed in one column.
+
+## Run descriptive statistics
+We will now find the average %HSC for all treatment groups (Average = mean(HSC)).
+```{r}
+Fig423b.tall %>% 
+  select(Age, HSC) %>%
+  filter(Age == "Young"|
+           Age == "Old"|
+           Age == "Old asplenic") %>% 
+  na.omit() %>% # Omit values with 'NA'
+  group_by(Age) %>% 
+  summarise(Average = mean(HSC))
+```
+

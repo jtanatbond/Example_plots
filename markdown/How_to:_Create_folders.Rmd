@@ -1,0 +1,36 @@
+---
+title: 'How to: Create folders'
+author: "Jonathan Tan"
+date: "08/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy(
+  position = c('top', 'right'),
+  color = "auto",
+  tooltip_message = "Copy code",
+  tooltip_success = "Copied!"
+)
+```
+
+## Organising your work with folders!
+
+Folders can be created to keep the main Rproject working directory organised and tidy:
+```{r, eval = FALSE}
+dir.create("scripts")
+dir.create("plots")
+dir.create("data")
+dir.create("markdown")
+```
+
+Under this folder structure:
+
++ A markdown script would be located in the "markdown" folder
++ A data file (eg. .csv, .pzfx) would located in the "data" folder
++ Relative to the the markdown script, a file pathway to the .csv file would be:
+../data/example.csv

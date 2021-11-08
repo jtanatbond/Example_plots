@@ -9,7 +9,16 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Understading your data
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy(
+  position = c('top', 'right'),
+  color = "auto",
+  tooltip_message = "Copy code",
+  tooltip_success = "Copied!"
+)
+```
+
+## Understanding your data
 
 Example: Comparing CD150hi (myeloid-biased) HSC between young and old animals
 
@@ -35,7 +44,7 @@ Fig423b <- read_pzfx("../data/young vs old graphs JTmod.pzfx", "Figure 4.2.3B")
 head(Fig423b, N = 6)
 ```
 
-Oh no! The data is not in a format which RStudio can't read!
+Oh no! The data is in a format which RStudio can't read!
 
 We need to arrange this dataset so that each column lists a variable (Age, HSC).
 
