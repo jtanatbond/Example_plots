@@ -42,7 +42,7 @@ When thinking about your data, identify the following:
   + *The percentage of CD150^hi^ HSC (Category = HSC)*
 
 
-## Here we are importing data from a Prism file
+## Import data from a Prism file
 List all the data tables in the Prism file.
 
 ```{r}
