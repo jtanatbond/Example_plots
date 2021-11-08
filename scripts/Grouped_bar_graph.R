@@ -4,7 +4,7 @@ library(tidyverse)
 
 ## Read .csv file
 library(readr)
-nhmrc <- read_csv("../data/NHMRC_scoring_history2.csv", 
+nhmrc <- read_csv("data/NHMRC_scoring_history2.csv", 
                   col_types = cols(Score = col_number()))
 View(nhmrc)
 

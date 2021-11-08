@@ -18,6 +18,12 @@ klippy::klippy(
 )
 ```
 
+<center>
+![FigName](../plots/Grouped_bar_graph.jpeg)
+</center>
+
+<br>
+
 ## Understanding your data
 
 Example: NHMRC scores over the last 2 years
@@ -83,7 +89,7 @@ We have created a grouped (dodged) bar graph.
 * One categorical variable has been plotted on the x-axis (x=Criteria)
 * The other categorical variable has been displayed using the "fill" argument (fill=Year)
 
-
+***
 
 
 

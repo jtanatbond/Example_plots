@@ -18,6 +18,8 @@ klippy::klippy(
 )
 ```
 
+<br>
+
 ## Organising your work with folders!
 
 Folders can be created to keep the main Rproject working directory organised and tidy:
@@ -28,9 +30,13 @@ dir.create("data")
 dir.create("markdown")
 ```
 
+<br>
 Under this folder structure:
 
 + A markdown script would be located in the "markdown" folder
 + A data file (eg. .csv, .pzfx) would located in the "data" folder
 + Relative to the the markdown script, a file pathway to the .csv file would be:
 ../data/example.csv
+
+
+***

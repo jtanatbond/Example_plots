@@ -18,6 +18,12 @@ klippy::klippy(
 )
 ```
 
+<center>
+![FigName](../plots/Dot_plot.jpeg)
+</center>
+
+<br>
+
 ## Understanding your data
 
 Example: Comparing CD150hi (myeloid-biased) HSC between young and old animals
@@ -28,7 +34,7 @@ When thinking about your data, identify the following:
  + *Young and old animals (ie. Category = Age)*
 
 2. What is your measurement **(dependent variables)**?
-  + *The percentage of CD150^hi^ HSC (Category = HSC)*
+  + *The MFI of CD150^hi^ HSC (Category = HSC)*
   
 ## Here we are importing data from a Prism file
 List all the data tables in the Prism file.
@@ -56,10 +62,10 @@ data1.tall <- data1 %>% select(Young, Old, "Old Asplenic") %>%
 head (data1.tall)
 ```
 
-Now all the observations (values for percent HSC) are listed in one column.
+Now all the observations (values for HSC MFI) are listed in one column.
 
 ## Run descriptive statistics
-We will now find the average %HSC for all treatment groups (Average = mean(HSC)).
+We will now find the average MFI for all treatment groups (Average = mean(HSC)).
 ```{r}
 data1.tall %>% 
   select(Age, HSC) %>%
@@ -211,7 +217,7 @@ We have created an annotated dot plot showing statistics (standard error bars, p
 * The categorical (independent) variable is plotted on the x-axis (x=Age)
 * The numerical (dependent) variable is plotted on the y-axis (HSC)
 
-
+***
 
 
 
