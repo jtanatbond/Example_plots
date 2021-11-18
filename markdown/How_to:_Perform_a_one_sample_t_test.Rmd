@@ -1,0 +1,111 @@
+---
+title: 'How to: Perform a one-sample t-test'
+author: "Jonathan Tan"
+date: "18/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy(
+  position = c('top', 'right'),
+  color = "auto",
+  tooltip_message = "Copy code",
+  tooltip_success = "Copied!"
+)
+```
+
+<br>
+
+http://www.sthda.com/english/wiki/one-sample-t-test-in-r
+
+
+<br>
+
+## One-sample t-test
+
+Used to compare the **mean** of one sample to a **known standard**
+
++ (or a theoretical or hypothetical mean)
+
+<br>
+
+eg. For an experiment where you have *control* and *treatment* conditions.
+
++ If data is expressed as "percent of control", you can test whether the average value of the treatment condition differs significantly from 100.
+
+<br>
+
+*Note that a one-sample t-test can be used only when the data are normally distributed. This can be checked using the Shapiro-Wilk test.*
+
+<br>
+  
+## Create a datafile directly in RStudio
+
+In this example, we are testing whether a 10min incubation is different to a 30min incubation.
+
++ The 10min incubation is the control and is given a standard value of 100% (mu).
++ The treatment in question is a 30min incubation.
+
+<br>
+
+Data can be entered into a numeric vector:
+```{r}
+data <-c(89, 102.3, 125)
+```
+
+<br>
+
+A data frame is then created called "expt":
+```{r}
+expt <- data.frame( 
+  percent = data
+)
+
+print(expt)
+```
+
+<br>
+
+## Statistics
+
+Does the data follow a normal distribution? Use the Shapiro-Wilk normality test:
+
++ Null hypothesis: the data are normally distributed
++ Alternative hypothesis: the data are not normally distributed
+
+```{r}
+shapiro.test(expt$percent)
+```
+From the output, the p-value is greater than the significance level 0.05 implying that the distribution of the data are not significantly different from normal distribution. In other words, we can assume normality.
+
+<br>
+
+## Compute one-sample t-test:
+The specified value for the known standard (mu) is 100%.
+```{r}
+test <- t.test(expt$percent, mu = 100)
+test
+```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 10px;}
+</style>
+<div class = "blue">
+
+The p-value of the test is **0.6567**, which is greater than the significance level **alpha = 0.05**.
+
+We can conclude that the mean percentage of the 30min incubation is not significantly different to 10mins.
+
+</div>
+
+
+<br>
+
+***
+
+
+
+

@@ -1,5 +1,5 @@
 ---
-title: 'How to: Perform and plot a paired t-test'
+title: 'How to: Enter data into RStudio'
 author: "Jonathan Tan"
 date: "12/11/2021"
 output: html_document
@@ -18,9 +18,6 @@ klippy::klippy(
 )
 ```
 
-<center>
-![FigName](../plots/Paired_t-test.jpeg)
-</center>
 
 <br>
 
@@ -69,44 +66,4 @@ print(expt)
 
 <br>
 
-Now is a good time to load the relevant packages:
-```{r, message = FALSE}
-library(tidyverse)
-library(ggpubr)
-```
-
-## Statistics
-Compute one-tailed paired students t-test:
-```{r}
-stats <- t.test(HSC ~ group, data = expt, paired = TRUE, var.equal = TRUE, alternative = "greater")
-stats
-```
-
-## Create paired box plot
-Plot %HSC by group (young vs old) and color by group:
-```{r}
-ggpaired(expt, x = "group", y = "HSC",
-         color = "group", line.color = "gray", line.size = 0.4,
-         palette = "jco") +
-         scale_y_continuous(expand = c(0, 0), limits = c(0, 100)) +
-         theme_bw() +
-         theme(legend.position="none") +
-         labs(x = "",
-               y = "%CD150^hi LT-HSC",
-               title = "Paired t-test, one-tailed") +
-          annotate("text", x = c(1.5), y = c(89), 
-                   label = c("p=0.0009") , color="black", 
-                   size=5 , angle=0, fontface="italic") +
-          annotate(geom = "segment", x = c(1), xend = c(2), y = c(85), yend = c(85), colour = "#060606") 
-```
-
-
-**Congratulations!**
-We have performed a paired t-test and plotted the results.
-
-
 ***
-
-
-
-
