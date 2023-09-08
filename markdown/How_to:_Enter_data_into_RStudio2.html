@@ -37,9 +37,8 @@ You may have some data that looks like this:
 |    5   |    4   |
 
 
-In this example, we are comparing the tissue groups: grafts vs spleen (alternatively this could be control vs treatment). These tissues represent our categories/groups/*independent* variables).
-
-We are then measuring the percentage of B cells in each tissue (numerical value). These values represent our data/observations/measurement/*dependent* variables).
+In this example, we are comparing grafts vs spleen (alternatively this could be control vs treatment). These tissues represent our categories (or groups, or independent variables).
+We are then measuring the percentage of B cells in each tissue (numerical value). These values represent our data (or observations, or dependent variables).
 
 <br>
   
@@ -50,20 +49,15 @@ http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/76-add-p
 http://www.sthda.com/english/wiki/paired-samples-t-test-in-r
 
 
-Let's make group names for each tissue (grafts, spleen), and then feed in (assign) corresponding data for each group:
-
-\# Note: _it is useful to annotate/add comments to include metadata (ie. which experiment the data originates from)_
-<br>
-
+Let's make group names for each tissue (grafts, spleen), and then feed in the corresponding data for each group:
 ```{r}
-# Expt FP97 (2/5/23)
 grafts <-c(2, 4, 5)
 spleen <-c(6, 8, 4)
 ```
 
 <br>
 
-Now let's put this information (all the variables) into a table (a tall table, or dataframe). We are going to call the table (dataframe): table.tall
+Now let's put this information into a table (a tall table, or dataframe). We are going to call the table (dataframe): table.tall
 
 ```{r}
 table.tall <- data.frame( 
@@ -77,9 +71,7 @@ table.tall <- data.frame(
 print(table.tall)
 ```
 
-As you can see, each column **header** represents a _variable_ (eg. category [independent variable] or data measurement [dependent variable]).
-
-RStudio likes dataframes in this format.
+As you can see, each column **header** in the table represents a _variable_ (eg. category [independent variable] or data [dependent variable]). RStudio likes dataframes in this format.
 
 <br>
 
@@ -98,6 +90,7 @@ table.tall <-rbind(table.tall,list("spleen",7))
 print(table.tall)
 ```
 
+_Note: it is useful to add comments to include metadata (ie. which experiment the data originates from)_
 
 <br>
 

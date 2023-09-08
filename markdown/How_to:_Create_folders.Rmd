@@ -20,23 +20,36 @@ klippy::klippy(
 
 <br>
 
+## Starting a New Project
+
+```{r, eval = FALSE}
+Click: Create a project
+Click: New Directory
+Click: New Project
+Click: New R Script
+```
+
+<br>
+
 ## Organising your work with folders!
 
 Folders can be created to keep the main Rproject working directory organised and tidy:
+
 ```{r, eval = FALSE}
+setwd("/run/media/jon/FILES/Work/Desktop items/Github_repos/")
+dir.create("New_project")
+setwd("/run/media/jon/FILES/Work/Desktop items/Github_repos/New_project")
 dir.create("scripts")
 dir.create("plots")
 dir.create("data")
 dir.create("markdown")
 ```
 
-<br>
 Under this folder structure:
 
 + A markdown script would be located in the "markdown" folder
-+ A data file (eg. .csv, .pzfx) would located in the "data" folder
++ A data file (eg. .csv, .pzfx) would be located in the "data" folder
 + Relative to the the markdown script, a file pathway to the .csv file would be:
 ../data/example.csv
-
 
 ***

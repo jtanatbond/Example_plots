@@ -24,6 +24,9 @@ Saving the .csv file in the working Rproject folder is a good strategy for keepi
 
 Folders can be created using the following commands:
 ```{r, eval = FALSE}
+setwd("/run/media/jon/FILES/Work/Desktop items/Github_repos/")
+dir.create("New_project")
+setwd("/run/media/jon/FILES/Work/Desktop items/Github_repos/New_project")
 dir.create("scripts")
 dir.create("plots")
 dir.create("data")

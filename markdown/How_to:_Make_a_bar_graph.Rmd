@@ -35,14 +35,18 @@ Example: Comparing CD150hi (myeloid-biased) HSC between young and old animals
 
 When thinking about your data, identify the following:
 
-1. What are you comparing **(independent variables)**?
+1. What groups are you comparing **(independent variables)**?
  + *Young and old animals (ie. Category = Age)*
 
-2. What is your measurement **(dependent variables)**?
+2. What are you measuring **(dependent variables)**?
   + *The percentage of CD150^hi^ HSC (Category = HSC)*
 
 
-## Import data from a Prism file
+## Import data (from a Prism file)
+Also see:
+    * How to Enter data into Rstudio
+    * How to import csv
+
 List all the data tables in the Prism file.
 
 ```{r}
@@ -56,11 +60,11 @@ Fig423b <- read_pzfx("../data/young vs old graphs JTmod.pzfx", "Figure 4.2.3B")
 head(Fig423b, N = 6)
 ```
 
-Oh no! The data is in a format which RStudio can't read!
+Oh no! The table (dataframe) is in a format which RStudio can't read!
 
-We need to arrange this dataset so that each column lists a variable (Age, HSC).
+We need to arrange this dataframe so that each column lists one variable (Age, HSC).
 
-Fortunately, we can call on the "pivot_longer" function to convert data into "Tall format":
+Fortunately, we can call on the "pivot_longer" function to convert dataframe into "Tall format":
 ```{r, message = FALSE}
 library(tidyverse)
 Fig423b.tall <- Fig423b %>% select(Young, Old, "Old asplenic") %>%
@@ -68,7 +72,7 @@ Fig423b.tall <- Fig423b %>% select(Young, Old, "Old asplenic") %>%
 head(Fig423b.tall, N = 21)
 ```
 
-Now all the observations (values for percent HSC) are listed in one column.
+Now all the measurements/observations (values for percent HSC) are listed in one column.
 
 ## Run descriptive statistics
 We will now find the average %HSC for all treatment groups (Average = mean(HSC)).
@@ -230,8 +234,8 @@ Fig423b.tallna %>%
 We have created an annotated bar graph showing statistics (standard error bars, p-value for one-tailed students t-tests)
 
 * We have 1 categorical variable (Age) and one numeric variable (%HSC)
-* The categorical (independent) variable is plotted on the x-axis (x=Age)
-* The numerical (dependent) variable is plotted on the y-axis (HSC)
+* The categorical (independent) variable is plotted on the x-axis (Age)
+* The numerical (dependent) variable is plotted on the y-axis (%HSC)
 
 ***
 

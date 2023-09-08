@@ -1,0 +1,59 @@
+---
+title: "How to: Append data to a dataframe"
+author: "Jonathan Tan and Karin Tourle"
+date: "22/03/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy(
+  position = c('top', 'right'),
+  color = "auto",
+  tooltip_message = "Copy code",
+  tooltip_success = "Copied!"
+)
+```
+
+<br>
+
+## Import a dataframe from Prism
+
+This dataset contains B1a cell frequency data from 8 week-old (8w) and 20 week-old (20w) spleen tissue.
+
+```{r}
+library(pzfx)
+pzfx_tables("../data/FP14_frequency.pzfx")
+SPL <- read_pzfx("../data/FP14_frequency.pzfx", "SPL")
+head(SPL, N = 6)
+```
+<br>
+
+## Convert from prism to Rstudio (tall) format
+
+```{r, eval = TRUE}
+library(tidyverse)
+SPL.tall <- SPL %>% select("8w", "20w") %>%
+  pivot_longer(., cols = c("8w","20w"), names_to = "Age", values_to = "B1a") ## Concatenate columns (8w, 20w) into one column (age)
+head(SPL.tall, N = 20)
+```
+<br>
+
+## Add new 4w data
+https://www.datamentor.io/r-programming/data-frame/
+
+
+```{r, eval = TRUE}
+SPL.tall <-rbind(SPL.tall,list("4w",1.9))
+SPL.tall <-rbind(SPL.tall,list("4w",2.7))
+SPL.tall <-rbind(SPL.tall,list("4w",3.3))
+print(SPL.tall)
+```
+<br>
+
+Your shiny new data has been added!
+
+***

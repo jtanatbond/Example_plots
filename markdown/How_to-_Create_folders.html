@@ -181,17 +181,28 @@ pre code {
   addKlippy('right', 'top', 'auto', '1', 'Copy code', 'Copied!');
 </script>
 <p><br></p>
+<div id="starting-a-new-project" class="section level2">
+<h2>Starting a New Project</h2>
+<pre class="r"><code>Click: Create a project
+Click: New Directory
+Click: New Project
+Click: New R Script</code></pre>
+<p><br></p>
+</div>
 <div id="organising-your-work-with-folders" class="section level2">
 <h2>Organising your work with folders!</h2>
 <p>Folders can be created to keep the main Rproject working directory organised and tidy:</p>
-<pre class="r"><code>dir.create(&quot;scripts&quot;)
+<pre class="r"><code>setwd(&quot;/run/media/jon/FILES/Work/Desktop items/Github_repos/&quot;)
+dir.create(&quot;New_project&quot;)
+setwd(&quot;/run/media/jon/FILES/Work/Desktop items/Github_repos/New_project&quot;)
+dir.create(&quot;scripts&quot;)
 dir.create(&quot;plots&quot;)
 dir.create(&quot;data&quot;)
 dir.create(&quot;markdown&quot;)</code></pre>
-<p><br> Under this folder structure:</p>
+<p>Under this folder structure:</p>
 <ul>
 <li>A markdown script would be located in the “markdown” folder</li>
-<li>A data file (eg. .csv, .pzfx) would located in the “data” folder</li>
+<li>A data file (eg. .csv, .pzfx) would be located in the “data” folder</li>
 <li>Relative to the the markdown script, a file pathway to the .csv file would be: ../data/example.csv</li>
 </ul>
 <hr />
